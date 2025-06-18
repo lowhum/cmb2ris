@@ -21,7 +21,7 @@ if st.button("🔄 Конвертиране в RIS"):
     st.session_state['ris_exp'] = ris.strip()
     if ris.strip() and "No valid bibliographic" not in ris:
         st.success(f"Конвертирани са {ris.count('TY  - JOUR')} запис(а) ")
-        st.text_area("RIS Output", value=st.session_state['ris_exp'], height=250)
+        st.text_area("Преглед RIS записите", value=st.session_state['ris_exp'], height=250)
     else:
         st.warning("Не са открити валидни записи.")
 
