@@ -5,11 +5,10 @@ import datetime
 st.title("📚 ЦМБ Каталог статии ➔ RIS конвертиране")
 
 st.markdown("""
-Копирайте статиите тук.  
 Кликнете Конверсия за да видите резултата в RIS формат и Изтегляне.
 """)
 
-user_text = st.text_area("Paste your bibliography text here :", height=200, value='')
+user_text = st.text_area("Копирайте записите тук.   :", height=200, value='')
 
 if 'ris_exp' not in st.session_state:
     st.session_state['ris_exp'] = ''
