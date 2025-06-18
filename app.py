@@ -8,7 +8,7 @@ st.markdown("""
 Кликнете Конверсия за да видите резултата в RIS формат и Изтегляне.
 """)
 
-user_text = st.text_area("Копирайте записите тук :", height=200, value='')
+user_text = st.text_area("Копирайте записите тук :", height=400, value='')
 
 if 'ris_exp' not in st.session_state:
     st.session_state['ris_exp'] = ''
