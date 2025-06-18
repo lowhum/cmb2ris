@@ -2,11 +2,11 @@ import streamlit as st
 from ris_converter import RobustRISConverter
 import datetime
 
-st.title("📚 Bibliography ➔ RIS Converter")
+st.title("📚 ЦМБ Каталог статии ➔ RIS конвертиране")
 
 st.markdown("""
-Paste bibliographic entries (1 per line).  
-Click Convert to see the RIS result and download the file.
+Копирайте статиите тук.  
+Кликнете Конверсия за да видите резултата в RIS формат и Изтегляне.
 """)
 
 user_text = st.text_area("Paste your bibliography text here :", height=200, value='')
