@@ -13,7 +13,7 @@ user_text = st.text_area("Копирайте записите тук :", height=
 if 'ris_exp' not in st.session_state:
     st.session_state['ris_exp'] = ''
 
-if st.button("🔄 Convert to RIS"):
+if st.button("🔄 Конвертирай в RIS"):
     converter = RobustRISConverter()
     ris = converter.process_text_to_ris(user_text)
     st.session_state['ris_exp'] = ris.strip()
@@ -25,7 +25,7 @@ if st.button("🔄 Convert to RIS"):
 
 if st.session_state['ris_exp']:
     st.download_button(
-        label="💾 Download .RIS file",
+        label="💾 Изтегли .RIS файла",
         data=st.session_state['ris_exp'],
         file_name=f"bibliography_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.ris"
     )
