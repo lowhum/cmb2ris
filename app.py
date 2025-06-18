@@ -12,7 +12,6 @@ st.markdown("""
 5. Отворете файла и копирайте библиографските записи (CTRL+C) """)
 
 user_text = st.text_area("Поставете записите тук (CTRL+V) :", height=400, value='')
-
 if 'ris_exp' not in st.session_state:
     st.session_state['ris_exp'] = ''
 
