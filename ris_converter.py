@@ -7,29 +7,18 @@ class RobustRISConverter:
     def extract_title(self, line):
         author_pattern = r'^[A-Z\-]+,\s+[A-Z][a-z]{0,2}\.(?:\s+et\s+al\.)?'
         match = re.match(author_pattern, line)
-        if not match: return None
+        if not match:
+            return None
         remaining_text = line[match.end():].strip()
+        # Extract text before the journal delimiter
         before_journal = remaining_text.split('//')[0]
+        # Find positions of single (not double) slashes in this segment
         single_slash_positions = [i for i in range(len(before_journal))
             if before_journal[i] == '/' and
             (i == 0 or before_journal[i-1] != '/') and
             (i == len(before_journal) - 1 or before_journal[i+1] != '/')]
+        # Take everything before last single slash, if one is present; else, use whole segment
         title_part = before_journal[:single_slash_positions[-1]].strip() if single_slash_positions else before_journal.strip()
-        if '; ' in title_part:
-            titles = title_part.split('; ')
-            if len(titles) > 1:
-                latin = None
-                for t in titles:
-                    if re.search(r'[a-zA-Z]', t):
-                        latin_chars = len(re.findall(r'[a-zA-Z]', t))
-                        cyrillic_chars = len(re.findall(r'[а-яё]', t, re.IGNORECASE))
-                        if latin_chars > cyrillic_chars:
-                            latin = t.strip()
-                            break
-                if latin:
-                    title_part = latin
-                else:
-                    title_part = titles[-1].strip()
         return title_part if title_part else None
 
     def extract_authors(self, line):
